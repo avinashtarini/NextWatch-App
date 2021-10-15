@@ -17,7 +17,6 @@ class Login extends Component {
     const {history} = this.props
     Cookies.set('jwt_token', jwtToken, {
       expires: 7,
-      path: '/',
     })
 
     history.replace('/')

@@ -1,7 +1,10 @@
 import {Component} from 'react'
+import ReactPlayer from 'react-player'
 import Cookies from 'js-cookie'
 
 class VideoItemDetails extends Component {
+  state = {videoDetailsList: [], listA: []}
+
   componentDidMount() {
     this.getVideoItemUrl()
   }
@@ -28,12 +31,31 @@ class VideoItemDetails extends Component {
     if (apiRequest.ok === true) {
       const newVideoDetails = {
         videoDetails: apiResponse.video_details,
+        channel: apiResponse.channel,
+        viewCount: apiResponse.view_count,
+        publishedAt: apiResponse.published_at,
+        description: apiResponse.description,
       }
+      const updatedVideoDetails = newVideoDetails.videoDetails
+      const item = {
+        id: updatedVideoDetails.id,
+        title: updatedVideoDetails.title,
+        videoUrl: updatedVideoDetails.video_url,
+        thumbnailUrl: updatedVideoDetails.thumbnail_url,
+      }
+      this.setState({videoDetailsList: newVideoDetails, listA: item})
     }
   }
 
   render() {
-    return <h>hi</h>
+    const {listA} = this.state
+    const {videoUrl} = listA
+
+    return (
+      <div>
+        <ReactPlayer url={videoUrl} />
+      </div>
+    )
   }
 }
 
