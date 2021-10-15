@@ -1,0 +1,28 @@
+.home-page-container {
+  width: 100%;
+  display: flex;
+}
+.content-display {
+  background-color: #f9f9f9;
+  width: 100%;
+  overflow: auto;
+  padding-right: 24px;
+  padding-top: 16px;
+  padding-left: 13px;
+}
+
+.video-display-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 81vh;
+}
+.content-display::-webkit-scrollbar {
+  display: none;
+}
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

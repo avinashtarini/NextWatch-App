@@ -1,0 +1,9 @@
+.games-display-container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+  margin-right: 10px;
+}
+.game-logo {
+  width: 200px;
+}

@@ -1,0 +1,44 @@
+.background-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 28px;
+}
+.login-container {
+  border: 2px solid #000000;
+  align-self: center;
+  width: 50%;
+  text-align: center;
+}
+.website-logo {
+  height: 60px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.form-element {
+  margin-bottom: 25px;
+  border: 2px solid #000000;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.username-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 25px;
+}
+.label-style {
+  align-self: flex-start;
+  padding: 0px;
+  margin: 0px;
+}
+.input-style {
+  width: 90%;
+  padding: 0px;
+}
+.show-password {
+  align-self: flex-start;
+}
+.login-btn {
+  color: #ffffff;
+}

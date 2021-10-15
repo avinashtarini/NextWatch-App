@@ -1,0 +1,30 @@
+.nav-container-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 10vh;
+}
+.website {
+  height: 40px;
+}
+.profile-photo {
+  width: 30px;
+}
+.logout-button {
+  color: #4f46e5;
+  background-color: #ffffff;
+  border: 2px solid #4f46e5;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+.theme-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
