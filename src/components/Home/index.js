@@ -5,6 +5,7 @@ import Loader from 'react-loader-spinner'
 import DisplayVideos from '../DisplayVideos'
 import SideNav from '../SideNav'
 import Header from '../Header'
+import Banner from '../Banner'
 
 import './index.css'
 import FailureView from '../FailureView'
@@ -60,13 +61,34 @@ class Home extends Component {
     }
   }
 
+  renderNoResultsView = () => (
+    <div className="no-results-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+        alt="no videos"
+        className="no-results"
+      />
+      <h1 className="search-heading">No Search results found</h1>
+      <p className="search-para">
+        Try different key words or remove search filter
+      </p>
+      <button type="button" onClick={this.getHomePageRequest}>
+        Retry
+      </button>
+    </div>
+  )
+
   renderHomePageSuccessView = () => {
     const {videoList} = this.state
+    const listLength = videoList.length
+
     return (
       <div className="video-display-container">
-        {videoList.map(eachList => (
-          <DisplayVideos key={eachList.id} videoData={eachList} />
-        ))}
+        {listLength > 0
+          ? videoList.map(eachList => (
+              <DisplayVideos key={eachList.id} videoData={eachList} />
+            ))
+          : this.renderNoResultsView()}
       </div>
     )
   }
@@ -87,6 +109,7 @@ class Home extends Component {
 
   renderSwitchCase = () => {
     const {requestStatus} = this.state
+    console.log(requestStatus)
     switch (requestStatus) {
       case homeStatus.success:
         return this.renderHomePageSuccessView()
@@ -117,7 +140,8 @@ class Home extends Component {
         <div className="home-page-container">
           <SideNav />
           <div className="content-display">
-            <div className="search-container">
+            <Banner />
+            <div data-testid="home" className="search-container">
               <input
                 onChange={this.updateSearchInput}
                 onKeyDown={this.searchFunction}
@@ -130,7 +154,7 @@ class Home extends Component {
                 className="search-btn"
                 onClick={this.retryHomePage}
               >
-                <BiSearchAlt2 />
+                <BiSearchAlt2 className="search-icon-style" />
               </button>
             </div>
             {this.renderSwitchCase()}

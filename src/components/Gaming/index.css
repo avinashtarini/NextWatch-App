@@ -10,6 +10,11 @@
   padding-top: 16px;
   padding-left: 13px;
 }
-.content-display-games::-webkit-scrollbar {
+
+.gaming-videos-container {
+  height: 89vh;
+  overflow: auto;
+}
+.gaming-videos-container::-webkit-scrollbar {
   display: none;
 }

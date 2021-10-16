@@ -39,6 +39,7 @@
 .show-password {
   align-self: flex-start;
 }
-.login-btn {
+.login-btn-status {
   color: #ffffff;
+  padding: 10px;
 }

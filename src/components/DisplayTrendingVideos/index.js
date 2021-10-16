@@ -17,11 +17,11 @@ const DisplayTrendingVideos = props => {
   }
   const {name} = updatedChannel
   return (
-    <Link to={`/videos/${id}`}>
+    <Link className="link-class-style" to={`/videos/${id}`}>
       <div className="video-data-list-games">
-        <img src={thumbnailUrl} alt="thumb" className="thumbnail" />
+        <img src={thumbnailUrl} alt="video thumbnail" className="thumbnail" />
         <div className="trending-videos-details-container">
-          <h1 className="video-name">{title}</h1>
+          <p className="video-name">{title}</p>
           <p className="channel-name">{name}</p>
           <div className="video-views-container-trending">
             <p>{viewCount}</p>

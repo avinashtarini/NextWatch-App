@@ -115,7 +115,7 @@ class Login extends Component {
                 Show Password
               </label>
             </div>
-            <button className="login-btn" type="submit">
+            <button className="login-btn-status" type="submit">
               Login
             </button>
             {errorStatus && <p className="error-msg">{errorMsg}</p>}

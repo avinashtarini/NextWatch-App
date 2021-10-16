@@ -12,7 +12,7 @@ const DisplayVideos = props => {
   const newDate = formatDistanceToNow(new Date(publishedAt))
   const {name, profileImageUrl} = updatedDetailsList
   return (
-    <Link to={`/videos/${id}`}>
+    <Link className="link-class-style" to={`/videos/${id}`}>
       <div className="video-data-list">
         <img
           src={thumbnailUrl}
@@ -22,7 +22,7 @@ const DisplayVideos = props => {
         <div className="description-container">
           <img
             src={profileImageUrl}
-            alt="profile"
+            alt="channel logo"
             className="profile-channel-icon"
           />
           <div className="more-info">

@@ -1,0 +1,7 @@
+.trending-videos-container {
+  height: 85vh;
+  overflow: auto;
+}
+.trending-videos-container::-webkit-scrollbar {
+  display: none;
+}

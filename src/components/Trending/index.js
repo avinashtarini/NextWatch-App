@@ -1,10 +1,12 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+import {HiFire} from 'react-icons/hi'
 import DisplayTrendingVideos from '../DisplayTrendingVideos'
 import Header from '../Header'
 import SideNav from '../SideNav'
 import FailureView from '../FailureView'
+import './index.css'
 
 const trends = {
   starting: 'START',
@@ -67,17 +69,16 @@ class Trending extends Component {
     return (
       <>
         <div className="trending-header">
+          <HiFire />
           <h1 className="trending-heading">Trending</h1>
         </div>
         <div className="trending-videos-container">
-          <ul>
-            {trendingList.map(eachTrendVideo => (
-              <DisplayTrendingVideos
-                key={eachTrendVideo.id}
-                videosListDetails={eachTrendVideo}
-              />
-            ))}
-          </ul>
+          {trendingList.map(eachTrendVideo => (
+            <DisplayTrendingVideos
+              key={eachTrendVideo.id}
+              videosListDetails={eachTrendVideo}
+            />
+          ))}
         </div>
       </>
     )
@@ -111,7 +112,9 @@ class Trending extends Component {
         <Header />
         <div className="home-page-container">
           <SideNav />
-          <div className="content-display">{this.checkTrendingStatus()}</div>
+          <div data-testid="trending" className="content-display">
+            {this.checkTrendingStatus()}
+          </div>
         </div>
       </>
     )

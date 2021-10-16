@@ -4,7 +4,7 @@ const NextWatchContext = React.createContext({
   darkTheme: false,
   savedVideosList: [],
   updateTheme: () => {},
-  updateSavedVideos: () => {},
+  updateSavedVideosL: () => {},
 })
 
 export default NextWatchContext

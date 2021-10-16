@@ -1,0 +1,45 @@
+.video-items-details-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+.dis-play-content-section {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+}
+.views-and-date-container {
+  display: flex;
+  align-items: center;
+}
+.views-and-like-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #909090;
+}
+.likes-list {
+  display: flex;
+  align-items: center;
+}
+.description-and-channel-container {
+  display: flex;
+}
+.likes-list {
+  list-style-type: none;
+}
+.like-btn {
+  background-color: transparent;
+  border-width: 0px;
+  margin-right: 10px;
+}
+.channel-style {
+  width: 50px;
+  height: 50px;
+  margin-right: 12px;
+}
+.video-list-item {
+  display: flex;
+  align-items: center;
+}

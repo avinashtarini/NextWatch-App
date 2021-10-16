@@ -1,5 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {SiYoutubegaming} from 'react-icons/si'
+
 import Loader from 'react-loader-spinner'
 import DisplayGamingVideos from '../DisplayGamingVideos'
 import Header from '../Header'
@@ -63,6 +65,7 @@ class Gaming extends Component {
     return (
       <>
         <div className="gaming-header">
+          <SiYoutubegaming />
           <h1 className="gaming-heading">Gaming</h1>
         </div>
         <div className="gaming-videos-container">
@@ -105,7 +108,7 @@ class Gaming extends Component {
         <Header />
         <div className="home-page-container">
           <SideNav />
-          <div className="content-display-games">
+          <div data-testid="gaming" className="content-display-games">
             {this.checkGamingStatus()}
           </div>
         </div>

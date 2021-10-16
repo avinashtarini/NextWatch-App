@@ -1,23 +1,34 @@
+import {Link} from 'react-router-dom'
+
 const DisplaySavedVideos = props => {
   const {savedVideoData} = props
-  const {title, thumbnailUrl, channel, viewCount, publishedAt} = savedVideoData
+  const {
+    id,
+    title,
+    thumbnailUrl,
+    channel,
+    viewCount,
+    publishedAt,
+  } = savedVideoData
   const updatedChannelVideos = {
     name: channel.name,
     profileImageUrl: channel.profile_image_url,
   }
   const {name} = updatedChannelVideos
   return (
-    <div>
-      <img src={thumbnailUrl} alt="saved video" />
+    <Link className="link-class-style" to={`/videos/${id}`}>
       <div>
-        <h1>{title}</h1>
-        <p>{name}</p>
+        <img src={thumbnailUrl} alt="video thumbnail" />
         <div>
-          <p>{viewCount}</p>
-          <p>{publishedAt}</p>
+          <p>{title}</p>
+          <p>{name}</p>
+          <div>
+            <p>{viewCount}</p>
+            <p>{publishedAt}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

@@ -3,7 +3,14 @@
   flex-direction: column;
   font-family: 'Roboto';
   margin-right: 10px;
+  text-decoration: none;
 }
 .game-logo {
   width: 200px;
+}
+.game-name {
+  text-decoration: none;
+}
+.link-class-style {
+  text-decoration: none;
 }
