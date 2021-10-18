@@ -3,14 +3,20 @@
   flex-wrap: wrap;
 }
 .content-display-games {
-  background-color: #f9f9f9;
   width: 100%;
   overflow: auto;
   padding-right: 24px;
   padding-top: 16px;
   padding-left: 13px;
 }
-
+.bg-games-dark {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+.bg-games-light {
+  background-color: #f9f9f9;
+  color: #000000;
+}
 .gaming-videos-container {
   height: 89vh;
   overflow: auto;

@@ -6,6 +6,8 @@ import DisplayVideos from '../DisplayVideos'
 import SideNav from '../SideNav'
 import Header from '../Header'
 import Banner from '../Banner'
+import NextWatchContext from '../../context/NextWatchContext'
+import {BackgroundHomeContainer} from './styledComponent'
 
 import './index.css'
 import FailureView from '../FailureView'
@@ -139,26 +141,41 @@ class Home extends Component {
         <Header />
         <div className="home-page-container">
           <SideNav />
-          <div className="content-display">
-            <Banner />
-            <div data-testid="home" className="search-container">
-              <input
-                onChange={this.updateSearchInput}
-                onKeyDown={this.searchFunction}
-                type="search"
-                className="search-input"
-              />
-              <button
-                data-testid="searchButton"
-                type="button"
-                className="search-btn"
-                onClick={this.retryHomePage}
-              >
-                <BiSearchAlt2 className="search-icon-style" />
-              </button>
-            </div>
-            {this.renderSwitchCase()}
-          </div>
+          <NextWatchContext.Consumer>
+            {value => {
+              const {darkTheme} = value
+              const homeBgColor = darkTheme ? '#181818' : '#f9f9f9'
+              const homeTextClr = darkTheme ? '#ffffff' : '#000000'
+
+              return (
+                <BackgroundHomeContainer
+                  data-testid="home"
+                  bgColor={homeBgColor}
+                  textColor={homeTextClr}
+                >
+                  <Banner />
+
+                  <div className="search-container">
+                    <input
+                      onChange={this.updateSearchInput}
+                      onKeyDown={this.searchFunction}
+                      type="search"
+                      className="search-input"
+                    />
+                    <button
+                      data-testid="searchButton"
+                      type="button"
+                      className="search-btn"
+                      onClick={this.retryHomePage}
+                    >
+                      <BiSearchAlt2 className="search-icon-style" />
+                    </button>
+                  </div>
+                  {this.renderSwitchCase()}
+                </BackgroundHomeContainer>
+              )
+            }}
+          </NextWatchContext.Consumer>
         </div>
       </>
     )

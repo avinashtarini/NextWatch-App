@@ -5,10 +5,14 @@ const FailureView = props => {
   }
   return (
     <div className="failure-container">
-      <img src="" alt="" className="failure-view" />
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
+        alt="failure view"
+        className="failure-view"
+      />
       <h1 className="failure-msg">Oops! Something Went Wrong</h1>
       <p className="failure-text">
-        We are having some trouble to complete your request. Please try again
+        We are having some trouble to complete your request. Please try again.
       </p>
       <button onClick={setRetryOption} type="button" className="retry-button">
         Retry

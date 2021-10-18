@@ -7,24 +7,26 @@ import DisplayGamingVideos from '../DisplayGamingVideos'
 import Header from '../Header'
 import SideNav from '../SideNav'
 import FailureView from '../FailureView'
+import NextWatchContext from '../../context/NextWatchContext'
+import {GamingVideosContainer} from './styledComponent'
 
 import './index.css'
 
-const gamesStatus = {
+const gamesLooking = {
   starting: 'START',
   loading: 'LOADING',
   success: 'SUCCESS',
   fail: 'FAILURE',
 }
 class Gaming extends Component {
-  state = {gamesList: [], gameDisplayStatus: gamesStatus.starting}
+  state = {gamesList: [], gameDisplayStatus: gamesLooking.starting}
 
   componentDidMount() {
     this.getDataRequestGaming()
   }
 
   getDataRequestGaming = async () => {
-    this.setState({gameDisplayStatus: gamesStatus.loading})
+    this.setState({gameDisplayStatus: gamesLooking.loading})
 
     const gameToken = Cookies.get('jwt_token')
     const gameBody = {
@@ -49,7 +51,11 @@ class Gaming extends Component {
       console.log(gamingListVideos)
       this.setState({
         gamesList: gamingListVideos,
-        gameDisplayStatus: gamesStatus.success,
+        gameDisplayStatus: gamesLooking.success,
+      })
+    } else {
+      this.setState({
+        gameDisplayStatus: gamesLooking.fail,
       })
     }
   }
@@ -91,11 +97,11 @@ class Gaming extends Component {
   checkGamingStatus = () => {
     const {gameDisplayStatus} = this.state
     switch (gameDisplayStatus) {
-      case gamesStatus.success:
+      case gamesLooking.success:
         return this.renderGamingSuccessView()
-      case gamesStatus.fail:
+      case gamesLooking.fail:
         return this.renderGamingFailureView()
-      case gamesStatus.loading:
+      case gamesLooking.loading:
         return this.renderGamingPageLoader()
       default:
         return null
@@ -108,9 +114,23 @@ class Gaming extends Component {
         <Header />
         <div className="home-page-container">
           <SideNav />
-          <div data-testid="gaming" className="content-display-games">
-            {this.checkGamingStatus()}
-          </div>
+          <NextWatchContext.Consumer>
+            {value => {
+              const {darkTheme} = value
+              const trendingVideoBgColor = darkTheme ? '#0f0f0f' : '#f9f9f9'
+              const trendingVideoTextClr = darkTheme ? '#ffffff' : '#000000'
+
+              return (
+                <GamingVideosContainer
+                  data-testid="gaming"
+                  bgColor={trendingVideoBgColor}
+                  textColor={trendingVideoTextClr}
+                >
+                  {this.checkGamingStatus()}
+                </GamingVideosContainer>
+              )
+            }}
+          </NextWatchContext.Consumer>
         </div>
       </>
     )

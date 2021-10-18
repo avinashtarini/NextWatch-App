@@ -3,13 +3,20 @@
   display: flex;
 }
 .content-display {
-  background-color: #f9f9f9;
   width: 100%;
   height: 90vh;
   overflow: auto;
   padding-right: 24px;
   padding-top: 16px;
   padding-left: 13px;
+}
+.bg-home-light {
+  background-color: #f9f9f9;
+  color: #000000;
+}
+.bg-home-dark {
+  background-color: #181818;
+  color: #ffffff;
 }
 
 .video-display-container {

@@ -19,7 +19,7 @@ class Banner extends Component {
   }
 
   renderBanner = () => (
-    <BackgroundBanner>
+    <BackgroundBanner data-testid="banner">
       <DetailsContainer>
         <NextWatchLogo
           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"

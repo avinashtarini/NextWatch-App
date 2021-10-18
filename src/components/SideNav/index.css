@@ -56,3 +56,7 @@
   width: 25px;
   height: 25px;
 }
+.bg-color-side-nav {
+  background-color: #231f20;
+  color: #ffffff;
+}

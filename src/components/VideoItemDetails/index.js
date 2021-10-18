@@ -8,9 +8,11 @@ import NextWatchContext from '../../context/NextWatchContext'
 import Header from '../Header'
 import SideNav from '../SideNav'
 import FailureView from '../FailureView'
+import {VideosItemsDetailsContainer} from './styledComponent'
+
 import './index.css'
 
-const stateSet = {
+const videoItemDetailsState = {
   start: 'START',
   success: 'SUCCESS',
   loading: 'LOADING',
@@ -21,7 +23,9 @@ class VideoItemDetails extends Component {
     videoDetailsList: [],
     channelDetails: '',
     savedState: 'Save',
-    isRequestSuccess: stateSet.start,
+    isLikeActive: false,
+    idDisLikeActive: false,
+    isRequestSuccessVideoItems: videoItemDetailsState.start,
   }
 
   componentDidMount() {
@@ -29,7 +33,9 @@ class VideoItemDetails extends Component {
   }
 
   getVideoItemUrl = async () => {
-    this.setState({isRequestSuccess: stateSet.loading})
+    this.setState({
+      isRequestSuccessVideoItems: videoItemDetailsState.loading,
+    })
     const {match} = this.props
     const {params} = match
     const {id} = params
@@ -52,7 +58,7 @@ class VideoItemDetails extends Component {
       const item = {
         id: updatedVideoDetails.id,
         title: updatedVideoDetails.title,
-        videoUrl: updatedVideoDetails.video_url,
+        videoURL: updatedVideoDetails.video_url,
         thumbnailUrl: updatedVideoDetails.thumbnail_url,
         channel: updatedVideoDetails.channel,
         viewCount: updatedVideoDetails.view_count,
@@ -68,27 +74,49 @@ class VideoItemDetails extends Component {
       this.setState({
         videoDetailsList: item,
         channelDetails: newChannelDetails,
-        isRequestSuccess: stateSet.success,
+        isRequestSuccessVideoItems: videoItemDetailsState.success,
       })
     } else {
       this.setState({
-        isRequestSuccess: stateSet.fail,
+        isRequestSuccessVideoItems: videoItemDetailsState.fail,
       })
     }
   }
 
+  changeLikeActive = () => {
+    this.setState(prevLike => ({isLikeActive: !prevLike.isLikeActive}))
+    this.setState({idDisLikeActive: false})
+  }
+
+  changeDislikeActive = () => {
+    this.setState(prevDisLike => ({
+      idDisLikeActive: !prevDisLike.idDisLikeActive,
+    }))
+    this.setState({isLikeActive: false})
+  }
+
   renderVideoItemDetailsPage = () => {
-    const {videoDetailsList, channelDetails, savedState} = this.state
+    const {
+      videoDetailsList,
+      channelDetails,
+      savedState,
+      idDisLikeActive,
+      isLikeActive,
+    } = this.state
 
     const {
-      videoUrl,
+      videoURL,
       title,
       viewCount,
       publishedAt,
       description,
     } = videoDetailsList
     const {name, profileImageUrl, subscriberCount} = channelDetails
-    console.log(savedState)
+    const likeStyle = isLikeActive ? 'like-btn active-style-like' : 'like-btn'
+    const disLikeStyle = idDisLikeActive
+      ? 'like-btn active-style-like'
+      : 'like-btn'
+
     return (
       <NextWatchContext.Consumer>
         {value => {
@@ -111,7 +139,7 @@ class VideoItemDetails extends Component {
 
           return (
             <div className="video-items-details-container">
-              <ReactPlayer width="100%" height="50vh" url={videoUrl} />
+              <ReactPlayer width="100%" height="50vh" url={videoURL} />
               <div className="dis-play-content-section">
                 <p className="video-heading">{title}</p>
                 <div className="views-and-like-container">
@@ -121,25 +149,31 @@ class VideoItemDetails extends Component {
                   </div>
                   <ul className="likes-list">
                     <li className="video-list-item">
-                      <BiLike />
-                      <button className="like-btn" type="button">
+                      <button
+                        onClick={this.changeLikeActive}
+                        className={likeStyle}
+                        type="button"
+                      >
+                        <BiLike />
                         Like
                       </button>
                     </li>
                     <li className="video-list-item">
-                      <BiDislike />
-                      <button className="like-btn" type="button">
-                        Dislike
+                      <button
+                        className={disLikeStyle}
+                        type="button"
+                        onClick={this.changeDislikeActive}
+                      >
+                        <BiDislike /> Dislike
                       </button>
                     </li>
                     <li className="video-list-item">
-                      <MdPlaylistAdd />
                       <button
                         className="like-btn"
                         onClick={updateSavedVideosList}
                         type="button"
                       >
-                        {savedState}
+                        <MdPlaylistAdd /> {savedState}
                       </button>
                     </li>
                   </ul>
@@ -147,7 +181,7 @@ class VideoItemDetails extends Component {
                 <div className="description-and-channel-container">
                   <img
                     src={profileImageUrl}
-                    alt="profile"
+                    alt="channel logo"
                     className="channel-style"
                   />
                   <div className="channel-description-and-name">
@@ -166,21 +200,21 @@ class VideoItemDetails extends Component {
     )
   }
 
-  renderThisPageLoader = () => (
+  renderThisVideoPageLoader = () => (
     <div className="loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#4f46e5" height="50" width="50" />
     </div>
   )
 
   renderThisPageCondition = () => {
-    const {isRequestSuccess} = this.state
-    switch (isRequestSuccess) {
-      case stateSet.success:
+    const {isRequestSuccessVideoItems} = this.state
+    switch (isRequestSuccessVideoItems) {
+      case videoItemDetailsState.success:
         return this.renderVideoItemDetailsPage()
-      case stateSet.fail:
+      case videoItemDetailsState.fail:
         return <FailureView retryFunction={this.getVideoItemUrl} />
-      case stateSet.loading:
-        return this.renderThisPageLoader()
+      case videoItemDetailsState.loading:
+        return this.renderThisVideoPageLoader()
       default:
         return null
     }
@@ -192,9 +226,23 @@ class VideoItemDetails extends Component {
         <Header />
         <div className="home-page-container">
           <SideNav />
-          <div data-testid="videoItemDetails" className="content-display">
-            {this.renderVideoItemDetailsPage()}
-          </div>
+          <NextWatchContext.Consumer>
+            {value => {
+              const {darkTheme} = value
+              const VideoItemDetailsBgColor = darkTheme ? '#0f0f0f' : '#f9f9f9'
+              const VideoItemDetailsTextClr = darkTheme ? '#ffffff' : '#000000'
+
+              return (
+                <VideosItemsDetailsContainer
+                  data-testid="videoItemDetails"
+                  bgColor={VideoItemDetailsBgColor}
+                  textColor={VideoItemDetailsTextClr}
+                >
+                  {this.renderThisPageCondition()}
+                </VideosItemsDetailsContainer>
+              )
+            }}
+          </NextWatchContext.Consumer>
         </div>
       </>
     )

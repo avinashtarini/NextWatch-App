@@ -5,3 +5,11 @@
 .trending-videos-container::-webkit-scrollbar {
   display: none;
 }
+.bg-trends-dark {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+.bg-trends-light {
+  background-color: #f9f9f9;
+  color: #000000;
+}

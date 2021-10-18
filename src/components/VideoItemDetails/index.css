@@ -4,6 +4,14 @@
 
   width: 100%;
 }
+.bg-video-item-dark {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+.bg-video-item-light {
+  background-color: #f9f9f9;
+  color: #000000;
+}
 .dis-play-content-section {
   display: flex;
   flex-direction: column;
@@ -33,6 +41,7 @@
   background-color: transparent;
   border-width: 0px;
   margin-right: 10px;
+  cursor: pointer;
 }
 .channel-style {
   width: 50px;
@@ -42,4 +51,7 @@
 .video-list-item {
   display: flex;
   align-items: center;
+}
+.active-style-like {
+  color: #2563eb;
 }

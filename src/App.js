@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Login from './components/Login'
 import Home from './components/Home'
 import Trending from './components/Trending'
@@ -63,7 +63,9 @@ class App extends Component {
             path="/videos/:id"
             component={VideoItemDetails}
           />
-          <Route component={NotFound} />
+
+          <Route exact path="/bad-path" component={NotFound} />
+          <Redirect to="/bad-path" />
         </Switch>
       </NextWatchContext.Provider>
     )

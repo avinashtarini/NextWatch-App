@@ -1,6 +1,8 @@
 import {Component} from 'react'
 import NextWatchContext from '../../context/NextWatchContext'
 import DisplaySavedVideos from '../DisplaySavedVideos'
+import {SavedVideosContainer} from './styledComponent'
+
 import Header from '../Header'
 import SideNav from '../SideNav'
 
@@ -24,7 +26,6 @@ class SavedVideos extends Component {
       {value => {
         const {savedVideosList} = value
 
-        // const savedVideosClass = darkTheme ? 'dark' : 'light'
         const savedVideoLength = savedVideosList.length
         if (savedVideoLength > 0) {
           return (
@@ -51,10 +52,24 @@ class SavedVideos extends Component {
         <Header />
         <div className="home-page-container">
           <SideNav />
-          <div data-testid="savedVideos " className="content-display">
-            <h1 className="save-heading">Saved Videos</h1>
-            {this.renderSavedVideosPage()}
-          </div>
+          <NextWatchContext.Consumer>
+            {value => {
+              const {darkTheme} = value
+              const saveVideoBgColor = darkTheme ? '#0f0f0f' : '#f9f9f9'
+              const saveVideoTextClr = darkTheme ? '#ffffff' : '#000000'
+
+              return (
+                <SavedVideosContainer
+                  data-testid="savedVideos "
+                  bgColor={saveVideoBgColor}
+                  textColor={saveVideoTextClr}
+                >
+                  <h1 className="save-heading">Saved Videos</h1>
+                  {this.renderSavedVideosPage()}
+                </SavedVideosContainer>
+              )
+            }}
+          </NextWatchContext.Consumer>
         </div>
       </>
     )

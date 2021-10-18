@@ -6,6 +6,9 @@ import DisplayTrendingVideos from '../DisplayTrendingVideos'
 import Header from '../Header'
 import SideNav from '../SideNav'
 import FailureView from '../FailureView'
+import NextWatchContext from '../../context/NextWatchContext'
+import {TrendingVideosContainer} from './styledComponent'
+
 import './index.css'
 
 const trends = {
@@ -112,9 +115,23 @@ class Trending extends Component {
         <Header />
         <div className="home-page-container">
           <SideNav />
-          <div data-testid="trending" className="content-display">
-            {this.checkTrendingStatus()}
-          </div>
+          <NextWatchContext.Consumer>
+            {value => {
+              const {darkTheme} = value
+              const trendingVideoBgColor = darkTheme ? '#0f0f0f' : '#f9f9f9'
+              const trendingVideoTextClr = darkTheme ? '#ffffff' : '#000000'
+
+              return (
+                <TrendingVideosContainer
+                  data-testid="trending"
+                  bgColor={trendingVideoBgColor}
+                  textColor={trendingVideoTextClr}
+                >
+                  {this.checkTrendingStatus()}
+                </TrendingVideosContainer>
+              )
+            }}
+          </NextWatchContext.Consumer>
         </div>
       </>
     )

@@ -6,6 +6,9 @@
   padding-right: 15px;
   height: 10vh;
 }
+.bg-color-header {
+  background-color: #231f20;
+}
 .website {
   height: 40px;
 }
@@ -22,9 +25,22 @@
   padding-bottom: 5px;
   font-size: 15px;
   border-radius: 8px;
+  margin-left: 12px;
 }
 .theme-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.theme-changer-btn {
+  margin-right: 12px;
+  background-color: transparent;
+  border-width: 0px;
+}
+.theme-icons {
+  font-size: 24px;
+}
+.theme-icon-sun {
+  font-size: 24px;
+  background-color: #ffffff;
 }
