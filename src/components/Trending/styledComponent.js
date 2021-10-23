@@ -10,4 +10,6 @@ export const TrendingVideosContainer = styled.div`
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
 `
-export default TrendingVideosContainer
+export const MainHeadingTrending = styled.div`
+  font-size: 25px;
+`

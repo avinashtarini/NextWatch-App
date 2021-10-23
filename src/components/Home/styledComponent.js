@@ -10,4 +10,29 @@ export const BackgroundHomeContainer = styled.div`
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
 `
-export default BackgroundHomeContainer
+
+export const FailureViewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+`
+
+export const FailureImage = styled.img`
+  width: 400px;
+`
+
+export const FailureHeading = styled.h1`
+  font-size: 30px;
+`
+
+export const FailurePara = styled.p`
+  font-size: 20px;
+`
+
+export const FailureVireButtonConatiner = styled.button`
+  font-size: 18px;
+  padding: 12px;
+`

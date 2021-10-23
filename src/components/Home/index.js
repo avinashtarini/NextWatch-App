@@ -6,11 +6,11 @@ import DisplayVideos from '../DisplayVideos'
 import SideNav from '../SideNav'
 import Header from '../Header'
 import Banner from '../Banner'
+import FailureView from '../FailureView'
 import NextWatchContext from '../../context/NextWatchContext'
 import {BackgroundHomeContainer} from './styledComponent'
 
 import './index.css'
-import FailureView from '../FailureView'
 
 const homeStatus = {
   starting: 'START',
@@ -20,7 +20,12 @@ const homeStatus = {
 }
 
 class Home extends Component {
-  state = {searchInput: '', videoList: [], requestStatus: homeStatus.starting}
+  state = {
+    searchInput: '',
+
+    videoList: [],
+    requestStatus: homeStatus.starting,
+  }
 
   componentDidMount() {
     this.getHomePageRequest()
@@ -41,8 +46,7 @@ class Home extends Component {
       requestOption,
     )
     const dataJson = await homePageResponse.json()
-    console.log(homePageResponse)
-    console.log(dataJson)
+
     if (homePageResponse.ok === true) {
       const updatedVideos = dataJson.videos.map(eachVideo => ({
         id: eachVideo.id,
@@ -109,14 +113,14 @@ class Home extends Component {
     </div>
   )
 
-  renderSwitchCase = () => {
+  renderSwitchCase = darkTheme => {
     const {requestStatus} = this.state
     console.log(requestStatus)
     switch (requestStatus) {
       case homeStatus.success:
         return this.renderHomePageSuccessView()
       case homeStatus.fail:
-        return this.renderHomePageFailureView()
+        return this.renderHomePageFailureView(darkTheme)
       case homeStatus.loading:
         return this.renderHomePageLoader()
       default:
@@ -154,7 +158,6 @@ class Home extends Component {
                   textColor={homeTextClr}
                 >
                   <Banner />
-
                   <div className="search-container">
                     <input
                       onChange={this.updateSearchInput}
@@ -171,7 +174,7 @@ class Home extends Component {
                       <BiSearchAlt2 className="search-icon-style" />
                     </button>
                   </div>
-                  {this.renderSwitchCase()}
+                  {this.renderSwitchCase(darkTheme)}
                 </BackgroundHomeContainer>
               )
             }}

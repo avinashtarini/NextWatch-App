@@ -7,7 +7,7 @@ import Header from '../Header'
 import SideNav from '../SideNav'
 import FailureView from '../FailureView'
 import NextWatchContext from '../../context/NextWatchContext'
-import {TrendingVideosContainer} from './styledComponent'
+import {TrendingVideosContainer, MainHeadingTrending} from './styledComponent'
 
 import './index.css'
 
@@ -71,9 +71,9 @@ class Trending extends Component {
     const {trendingList} = this.state
     return (
       <>
-        <div className="trending-header">
+        <div data-testid="banner">
           <HiFire />
-          <h1 className="trending-heading">Trending</h1>
+          <MainHeadingTrending>Trending</MainHeadingTrending>
         </div>
         <div className="trending-videos-container">
           {trendingList.map(eachTrendVideo => (

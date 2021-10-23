@@ -1,19 +1,5 @@
 import styled from 'styled-components'
 
-export const GamingVideosContainer = styled.div`
-  width: 100%;
-  height: 90vh;
-  overflow: auto;
-  padding-right: 24px;
-  padding-top: 16px;
-  padding-left: 13px;
-  background-color: ${props => props.bgColor};
-  color: ${props => props.textColor};
-`
-export const MainHeadingGaming = styled.div`
-  font-size: 25px;
-`
-
 export const FailureViewContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,7 +21,7 @@ export const FailurePara = styled.p`
   font-size: 20px;
 `
 
-export const FailureVireButtonConatiner = styled.button`
+export const FailureViewButtonContainer = styled.button`
   font-size: 18px;
   padding: 12px;
 `

@@ -9,13 +9,15 @@ import VideoItemDetails from './components/VideoItemDetails'
 import SavedVideos from './components/SavedVideos'
 import WrappedComponent from './components/WrappedComponent'
 import NextWatchContext from './context/NextWatchContext'
+
 import './App.css'
 
 // Replace your code here
 class App extends Component {
   state = {
     darkTheme: false,
-    savedVideosList: '',
+    isSavedTextState: 'Save',
+    savedVideosList: [],
   }
 
   updateTheme = () => {
@@ -24,26 +26,36 @@ class App extends Component {
 
   updateSavedVideosL = videoSave => {
     const {savedVideosList} = this.state
-    console.log(savedVideosList)
-    const condition = savedVideosList.includes(videoSave)
+
+    const condition = savedVideosList.find(
+      eachVideoL => eachVideoL.id === videoSave.id,
+    )
+    console.log(condition)
     if (condition) {
-      const abc = savedVideosList.filter(
+      const updatedCartItem = savedVideosList.filter(
         eachSavedCall => eachSavedCall.id !== videoSave.id,
       )
-      console.log(abc)
-      this.setState({savedVideosList: abc})
+      console.log(updatedCartItem)
+      this.setState({
+        savedVideosList: updatedCartItem,
+        isSavedTextState: 'Save',
+      })
     } else {
-      this.setState({savedVideosList: [...savedVideosList, videoSave]})
+      this.setState({
+        savedVideosList: [...savedVideosList, videoSave],
+        isSavedTextState: 'Saved',
+      })
     }
   }
 
   render() {
-    const {darkTheme, savedVideosList} = this.state
+    const {darkTheme, isSavedTextState, savedVideosList} = this.state
     return (
       <NextWatchContext.Provider
         value={{
           darkTheme,
           savedVideosList,
+          isSavedTextState,
           updateTheme: this.updateTheme,
           updateSavedVideosL: this.updateSavedVideosL,
         }}

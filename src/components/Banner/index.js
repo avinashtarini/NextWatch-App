@@ -37,9 +37,7 @@ class Banner extends Component {
   render() {
     const {displayBanner} = this.state
 
-    return (
-      <div data-testid="banner">{displayBanner && this.renderBanner()}</div>
-    )
+    return <div>{displayBanner && this.renderBanner()}</div>
   }
 }
 

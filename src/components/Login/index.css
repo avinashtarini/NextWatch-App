@@ -4,21 +4,23 @@
   justify-content: center;
   align-items: center;
   padding: 28px;
+  height: 100vh;
+  font-family: 'Bree Serif';
 }
 .login-container {
-  border: 2px solid #000000;
-  align-self: center;
-  width: 50%;
+  box-shadow: 4px 4px 4px 4px #aaaaaa;
+  border-radius: 16px;
+  width: 30%;
   text-align: center;
 }
 .website-logo {
-  height: 60px;
+  height: 50px;
   margin-top: 25px;
   margin-bottom: 25px;
 }
 .form-element {
   margin-bottom: 25px;
-  border: 2px solid #000000;
+
   margin-left: 25px;
   margin-right: 25px;
 }
@@ -29,17 +31,38 @@
 }
 .label-style {
   align-self: flex-start;
-  padding: 0px;
-  margin: 0px;
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 .input-style {
   width: 90%;
-  padding: 0px;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #9d9998;
 }
 .show-password {
   align-self: flex-start;
+  margin-top: 10px;
 }
 .login-btn-status {
   color: #ffffff;
   padding: 10px;
+}
+@media screen and (max-width: 768px) {
+  .background-login-container {
+    padding: 10px;
+  }
+  .login-container {
+    box-shadow: 2px 4px 4px 3px #aaaaaa;
+    width: 90%;
+  }
+  .website-logo {
+    height: 40px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
 }

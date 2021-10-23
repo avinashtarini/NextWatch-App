@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {LoginButton} from './styledComponent'
 
 import './index.css'
 
@@ -84,7 +85,7 @@ class Login extends Component {
               <label htmlFor="login" className="label-style">
                 USERNAME
               </label>
-              <br />
+
               <input
                 type="text"
                 id="login"
@@ -96,7 +97,7 @@ class Login extends Component {
               <label htmlFor="code" className="label-style">
                 PASSWORD
               </label>
-              <br />
+
               <input
                 className="input-style"
                 type={inputTypeSet}
@@ -115,9 +116,9 @@ class Login extends Component {
                 Show Password
               </label>
             </div>
-            <button className="login-btn-status" type="submit">
+            <LoginButton className="login-btn-status" type="submit">
               Login
-            </button>
+            </LoginButton>
             {errorStatus && <p className="error-msg">{errorMsg}</p>}
           </form>
         </div>

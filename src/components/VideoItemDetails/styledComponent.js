@@ -10,4 +10,9 @@ export const VideosItemsDetailsContainer = styled.div`
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
 `
-export default VideosItemsDetailsContainer
+export const ButtonContainer = styled.button`
+  border-width: 0px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: ${props => props.buttonColor};
+`

@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import ReactPlayer from 'react-player/youtube'
+import ReactPlayer from 'react-player/'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {BiLike, BiDislike} from 'react-icons/bi'
@@ -8,7 +8,7 @@ import NextWatchContext from '../../context/NextWatchContext'
 import Header from '../Header'
 import SideNav from '../SideNav'
 import FailureView from '../FailureView'
-import {VideosItemsDetailsContainer} from './styledComponent'
+import {VideosItemsDetailsContainer, ButtonContainer} from './styledComponent'
 
 import './index.css'
 
@@ -22,7 +22,6 @@ class VideoItemDetails extends Component {
   state = {
     videoDetailsList: [],
     channelDetails: '',
-    savedState: 'Save',
     isLikeActive: false,
     idDisLikeActive: false,
     isRequestSuccessVideoItems: videoItemDetailsState.start,
@@ -95,11 +94,10 @@ class VideoItemDetails extends Component {
     this.setState({isLikeActive: false})
   }
 
-  renderVideoItemDetailsPage = () => {
+  renderVideoItemDetailsPage = (updateSavedVideosL, isSavedTextState) => {
     const {
       videoDetailsList,
       channelDetails,
-      savedState,
       idDisLikeActive,
       isLikeActive,
     } = this.state
@@ -112,91 +110,70 @@ class VideoItemDetails extends Component {
       description,
     } = videoDetailsList
     const {name, profileImageUrl, subscriberCount} = channelDetails
-    const likeStyle = isLikeActive ? 'like-btn active-style-like' : 'like-btn'
-    const disLikeStyle = idDisLikeActive
-      ? 'like-btn active-style-like'
-      : 'like-btn'
+    const likeStyle = isLikeActive ? '#2563eb' : '#64748b'
+    const disLikeStyle = idDisLikeActive ? '#2563eb' : '#64748b'
+    console.log(isSavedTextState)
+    const updateSavedVideosList = () => {
+      updateSavedVideosL(videoDetailsList)
+    }
 
     return (
-      <NextWatchContext.Consumer>
-        {value => {
-          const {updateSavedVideosL} = value
-          const updateSavedVideosList = () => {
-            if (savedState === 'Save') {
-              this.setState(
-                {
-                  savedState: 'Saved',
-                },
-                updateSavedVideosL(videoDetailsList),
-              )
-            } else {
-              this.setState(
-                {savedState: 'Save'},
-                updateSavedVideosL(videoDetailsList),
-              )
-            }
-          }
-
-          return (
-            <div className="video-items-details-container">
-              <ReactPlayer width="100%" height="50vh" url={videoURL} />
-              <div className="dis-play-content-section">
-                <p className="video-heading">{title}</p>
-                <div className="views-and-like-container">
-                  <div className="views-and-date-container">
-                    <p>{viewCount}</p>
-                    <p>{publishedAt}</p>
-                  </div>
-                  <ul className="likes-list">
-                    <li className="video-list-item">
-                      <button
-                        onClick={this.changeLikeActive}
-                        className={likeStyle}
-                        type="button"
-                      >
-                        <BiLike />
-                        Like
-                      </button>
-                    </li>
-                    <li className="video-list-item">
-                      <button
-                        className={disLikeStyle}
-                        type="button"
-                        onClick={this.changeDislikeActive}
-                      >
-                        <BiDislike /> Dislike
-                      </button>
-                    </li>
-                    <li className="video-list-item">
-                      <button
-                        className="like-btn"
-                        onClick={updateSavedVideosList}
-                        type="button"
-                      >
-                        <MdPlaylistAdd /> {savedState}
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-                <div className="description-and-channel-container">
-                  <img
-                    src={profileImageUrl}
-                    alt="channel logo"
-                    className="channel-style"
-                  />
-                  <div className="channel-description-and-name">
-                    <div className="channel-name-details">
-                      <p>{name}</p>
-                      <p>{subscriberCount}</p>
-                    </div>
-                    <p className="channel-desc">{description}</p>
-                  </div>
-                </div>
-              </div>
+      <div className="video-items-details-container">
+        <ReactPlayer url={videoURL} width="100%" height="50vh" />
+        <div className="dis-play-content-section">
+          <p className="video-heading">{title}</p>
+          <div className="views-and-like-container">
+            <div className="views-and-date-container">
+              <p>{viewCount}</p>
+              <p>{publishedAt}</p>
             </div>
-          )
-        }}
-      </NextWatchContext.Consumer>
+            <ul className="likes-list">
+              <li className="video-list-item">
+                <ButtonContainer
+                  onClick={this.changeLikeActive}
+                  buttonColor={likeStyle}
+                  type="button"
+                >
+                  <BiLike />
+                  Like
+                </ButtonContainer>
+              </li>
+              <li className="video-list-item">
+                <ButtonContainer
+                  buttonColor={disLikeStyle}
+                  type="button"
+                  onClick={this.changeDislikeActive}
+                >
+                  <BiDislike /> Dislike
+                </ButtonContainer>
+              </li>
+              <li className="video-list-item">
+                <button
+                  className="like-btn"
+                  onClick={updateSavedVideosList}
+                  type="button"
+                >
+                  <MdPlaylistAdd /> {isSavedTextState}
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div className="description-and-channel-container">
+            <img
+              src={profileImageUrl}
+              alt="channel logo"
+              className="channel-style"
+            />
+            <div className="channel-description-and-name">
+              <div className="channel-name-details">
+                <p>{name}</p>
+                <p>{subscriberCount}</p>
+              </div>
+              <p className="channel-desc">{description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 
@@ -206,13 +183,24 @@ class VideoItemDetails extends Component {
     </div>
   )
 
-  renderThisPageCondition = () => {
+  retryVideoDetailsPage = () => {
+    this.getVideoItemUrl()
+  }
+
+  renderVideItemDetailsFailureView = () => (
+    <FailureView retryFunction={this.retryVideoDetailsPage} />
+  )
+
+  renderThisPageCondition = (updateSavedVideosL, isSavedTextState) => {
     const {isRequestSuccessVideoItems} = this.state
     switch (isRequestSuccessVideoItems) {
       case videoItemDetailsState.success:
-        return this.renderVideoItemDetailsPage()
+        return this.renderVideoItemDetailsPage(
+          updateSavedVideosL,
+          isSavedTextState,
+        )
       case videoItemDetailsState.fail:
-        return <FailureView retryFunction={this.getVideoItemUrl} />
+        return this.renderVideItemDetailsFailureView()
       case videoItemDetailsState.loading:
         return this.renderThisVideoPageLoader()
       default:
@@ -228,7 +216,7 @@ class VideoItemDetails extends Component {
           <SideNav />
           <NextWatchContext.Consumer>
             {value => {
-              const {darkTheme} = value
+              const {darkTheme, isSavedTextState, updateSavedVideosL} = value
               const VideoItemDetailsBgColor = darkTheme ? '#0f0f0f' : '#f9f9f9'
               const VideoItemDetailsTextClr = darkTheme ? '#ffffff' : '#000000'
 
@@ -238,7 +226,10 @@ class VideoItemDetails extends Component {
                   bgColor={VideoItemDetailsBgColor}
                   textColor={VideoItemDetailsTextClr}
                 >
-                  {this.renderThisPageCondition()}
+                  {this.renderThisPageCondition(
+                    updateSavedVideosL,
+                    isSavedTextState,
+                  )}
                 </VideosItemsDetailsContainer>
               )
             }}

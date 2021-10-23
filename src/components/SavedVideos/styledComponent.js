@@ -10,4 +10,6 @@ export const SavedVideosContainer = styled.div`
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
 `
-export default SavedVideosContainer
+export const MainHeadingSavedVideos = styled.div`
+  font-size: 25px;
+`

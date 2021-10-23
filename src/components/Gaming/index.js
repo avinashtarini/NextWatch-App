@@ -6,9 +6,9 @@ import Loader from 'react-loader-spinner'
 import DisplayGamingVideos from '../DisplayGamingVideos'
 import Header from '../Header'
 import SideNav from '../SideNav'
-import FailureView from '../FailureView'
 import NextWatchContext from '../../context/NextWatchContext'
-import {GamingVideosContainer} from './styledComponent'
+import FailureView from '../FailureView'
+import {GamingVideosContainer, MainHeadingGaming} from './styledComponent'
 
 import './index.css'
 
@@ -70,9 +70,9 @@ class Gaming extends Component {
     const {gamesList} = this.state
     return (
       <>
-        <div className="gaming-header">
+        <div data-testid="banner" className="gaming-header">
           <SiYoutubegaming />
-          <h1 className="gaming-heading">Gaming</h1>
+          <MainHeadingGaming>Gaming</MainHeadingGaming>
         </div>
         <div className="gaming-videos-container">
           {gamesList.map(eachGameVideo => (
@@ -94,13 +94,13 @@ class Gaming extends Component {
     <FailureView retryFunction={this.retryGamingPage} />
   )
 
-  checkGamingStatus = () => {
+  checkGamingStatus = darkTheme => {
     const {gameDisplayStatus} = this.state
     switch (gameDisplayStatus) {
       case gamesLooking.success:
         return this.renderGamingSuccessView()
       case gamesLooking.fail:
-        return this.renderGamingFailureView()
+        return this.renderGamingFailureView(darkTheme)
       case gamesLooking.loading:
         return this.renderGamingPageLoader()
       default:
@@ -126,7 +126,7 @@ class Gaming extends Component {
                   bgColor={trendingVideoBgColor}
                   textColor={trendingVideoTextClr}
                 >
-                  {this.checkGamingStatus()}
+                  {this.checkGamingStatus(darkTheme)}
                 </GamingVideosContainer>
               )
             }}

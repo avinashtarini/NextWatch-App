@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import NextWatchContext from '../../context/NextWatchContext'
 import DisplaySavedVideos from '../DisplaySavedVideos'
-import {SavedVideosContainer} from './styledComponent'
+import {SavedVideosContainer, MainHeadingSavedVideos} from './styledComponent'
 
 import Header from '../Header'
 import SideNav from '../SideNav'
@@ -64,7 +64,9 @@ class SavedVideos extends Component {
                   bgColor={saveVideoBgColor}
                   textColor={saveVideoTextClr}
                 >
-                  <h1 className="save-heading">Saved Videos</h1>
+                  <MainHeadingSavedVideos data-testid="banner">
+                    Saved Videos
+                  </MainHeadingSavedVideos>
                   {this.renderSavedVideosPage()}
                 </SavedVideosContainer>
               )
