@@ -70,7 +70,7 @@ class Gaming extends Component {
     const {gamesList} = this.state
     return (
       <>
-        <div data-testid="banner" className="gaming-header">
+        <div data-testid="banner" className="top-main-heading-container">
           <SiYoutubegaming />
           <MainHeadingGaming>Gaming</MainHeadingGaming>
         </div>

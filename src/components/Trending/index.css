@@ -13,3 +13,10 @@
   background-color: #f9f9f9;
   color: #000000;
 }
+.top-main-heading-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 40px;
+  justify-content: center;
+}

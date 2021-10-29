@@ -11,6 +11,8 @@
 .game-name {
   text-decoration: none;
 }
-.link-class-style {
-  text-decoration: none;
+
+.link-style {
+  text-decoration: inherit;
+  color: inherit;
 }

@@ -11,5 +11,7 @@ export const SavedVideosContainer = styled.div`
   color: ${props => props.textColor};
 `
 export const MainHeadingSavedVideos = styled.div`
-  font-size: 25px;
+  font-size: 40px;
+  font-weight: 600;
+  text-decoration: underline;
 `

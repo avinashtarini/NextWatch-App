@@ -37,7 +37,7 @@ const Header = props => {
           >
             {close => (
               <>
-                <div>
+                <div className="popup-desc">
                   <p>Are you sure, you want to logout?</p>
                 </div>
                 <button
@@ -50,7 +50,7 @@ const Header = props => {
                 <button
                   type="button"
                   onClick={getLoggedOut}
-                  className="confirm-btn"
+                  className="trigger-button"
                 >
                   Confirm
                 </button>
@@ -72,7 +72,7 @@ const Header = props => {
           : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
         return (
           <nav className={bgColor}>
-            <Link to="/">
+            <Link className="header-link-style" to="/">
               <img
                 src={websiteLogoHeader}
                 alt="website logo"

@@ -27,3 +27,14 @@
 .views-count-text {
   margin-right: 20px;
 }
+
+.link-style {
+  text-decoration: inherit;
+  color: inherit;
+}
+@media screen and (max-width: 568px) {
+  .video-data-list {
+    width: 230px;
+    text-decoration: none;
+  }
+}

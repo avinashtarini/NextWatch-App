@@ -17,27 +17,27 @@ const SideNav = () => (
       return (
         <div className={themeClass}>
           <ul className="ul-list-home">
-            <Link className="link-class-style" to="/">
+            <Link className="nav-link-style" to="/">
               <li className="li-class-container">
-                <HiHome />
+                <HiHome className="side-icon" />
                 <h1 className="heading-nav">Home</h1>
               </li>
             </Link>
-            <Link className="link-class-style" to="/trending">
+            <Link className="nav-link-style" to="/trending">
               <li className="li-class-container">
-                <HiFire />
+                <HiFire className="side-icon" />
                 <h1 className="heading-nav">Trending</h1>
               </li>
             </Link>
-            <Link className="link-class-style" to="/gaming">
+            <Link className="nav-link-style" to="/gaming">
               <li className="li-class-container">
-                <SiYoutubegaming />
+                <SiYoutubegaming className="side-icon" />
                 <h1 className="heading-nav">Gaming</h1>
               </li>
             </Link>
-            <Link className="link-class-style" to="/saved-videos">
+            <Link className="nav-link-style" to="/saved-videos">
               <li className="li-class-container">
-                <MdPlaylistAdd />
+                <MdPlaylistAdd className="side-icon" />
                 <h1 className="heading-nav">Saved videos</h1>
               </li>
             </Link>

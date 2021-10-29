@@ -11,5 +11,5 @@ export const TrendingVideosContainer = styled.div`
   color: ${props => props.textColor};
 `
 export const MainHeadingTrending = styled.div`
-  font-size: 25px;
+  font-size: 38px;
 `

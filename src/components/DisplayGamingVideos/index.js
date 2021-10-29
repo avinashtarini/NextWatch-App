@@ -6,7 +6,7 @@ const DisplayGamingVideos = props => {
   const {id, title, thumbnailUrl, viewCount} = gamesListDetails
 
   return (
-    <Link className="link-class-style" to={`/videos/${id}`}>
+    <Link className="link-style" to={`/videos/${id}`}>
       <div className="games-display-container">
         <img src={thumbnailUrl} alt="video thumbnail" className="game-logo" />
         <p className="game-name">{title}</p>

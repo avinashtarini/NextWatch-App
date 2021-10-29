@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import NextWatchContext from '../../context/NextWatchContext'
-import DisplaySavedVideos from '../DisplaySavedVideos'
+import DisplayTrendingVideos from '../DisplayTrendingVideos'
 import {SavedVideosContainer, MainHeadingSavedVideos} from './styledComponent'
 
 import Header from '../Header'
@@ -16,8 +16,10 @@ class SavedVideos extends Component {
         alt="no saved videos"
         className="no-saved"
       />
-      <h1>No saved videos found</h1>
-      <p>You can save your videos while watching them</p>
+      <h1 className="saved-heading">No saved videos found</h1>
+      <p className="no-save-desc">
+        You can save your videos while watching them
+      </p>
     </div>
   )
 
@@ -32,9 +34,9 @@ class SavedVideos extends Component {
             <>
               {savedVideosList.length !== 0
                 ? savedVideosList.map(eachSave => (
-                    <DisplaySavedVideos
+                    <DisplayTrendingVideos
                       key={eachSave.id}
-                      savedVideoData={eachSave}
+                      videosListDetails={eachSave}
                     />
                   ))
                 : null}
@@ -64,7 +66,10 @@ class SavedVideos extends Component {
                   bgColor={saveVideoBgColor}
                   textColor={saveVideoTextClr}
                 >
-                  <MainHeadingSavedVideos data-testid="banner">
+                  <MainHeadingSavedVideos
+                    data-testid="banner"
+                    className="top-main-heading-container"
+                  >
                     Saved Videos
                   </MainHeadingSavedVideos>
                   {this.renderSavedVideosPage()}

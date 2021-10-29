@@ -71,7 +71,7 @@ class Trending extends Component {
     const {trendingList} = this.state
     return (
       <>
-        <div data-testid="banner">
+        <div data-testid="banner" className="top-main-heading-container">
           <HiFire />
           <MainHeadingTrending>Trending</MainHeadingTrending>
         </div>
