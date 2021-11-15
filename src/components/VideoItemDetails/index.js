@@ -119,12 +119,12 @@ class VideoItemDetails extends Component {
 
     return (
       <div className="video-items-details-container">
-        <ReactPlayer url={videoURL} width="100%" height="50vh" />
+        <ReactPlayer url={videoURL} width="100%" height="40vh" />
         <div className="dis-play-content-section">
           <p className="video-heading">{title}</p>
           <div className="views-and-like-container">
             <div className="views-and-date-container">
-              <p>{viewCount}</p>
+              <p className="count">{viewCount}</p>
               <p>{publishedAt}</p>
             </div>
             <ul className="likes-list">
@@ -133,6 +133,7 @@ class VideoItemDetails extends Component {
                   onClick={this.changeLikeActive}
                   buttonColor={likeStyle}
                   type="button"
+                  className="like-btn"
                 >
                   <BiLike />
                   Like
@@ -142,6 +143,7 @@ class VideoItemDetails extends Component {
                 <ButtonContainer
                   buttonColor={disLikeStyle}
                   type="button"
+                  className="like-btn"
                   onClick={this.changeDislikeActive}
                 >
                   <BiDislike /> Dislike
@@ -166,8 +168,8 @@ class VideoItemDetails extends Component {
             />
             <div className="channel-description-and-name">
               <div className="channel-name-details">
-                <p>{name}</p>
-                <p>{subscriberCount}</p>
+                <p className="channel-name-l">{name}</p>
+                <p className="channel-name-l">{subscriberCount}</p>
               </div>
               <p className="channel-desc">{description}</p>
             </div>

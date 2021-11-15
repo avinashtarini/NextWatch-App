@@ -1,5 +1,5 @@
 .video-data-list {
-  width: 300px;
+  width: 250px;
   text-decoration: none;
 }
 .thumbnail-style {
@@ -34,7 +34,9 @@
 }
 @media screen and (max-width: 568px) {
   .video-data-list {
-    width: 230px;
+    width: 100%;
     text-decoration: none;
   }
+}
+@media screen and (max-width: 768px) {
 }

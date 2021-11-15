@@ -16,3 +16,22 @@
   text-decoration: inherit;
   color: inherit;
 }
+.game-description-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@media screen and (max-width: 567px) {
+  .games-display-container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    text-decoration: none;
+  }
+  .game-logo {
+    width: 90%;
+  }
+  .game-name {
+    text-decoration: none;
+  }
+}

@@ -62,7 +62,7 @@ const Header = props => {
         const showThemeIcon = darkTheme ? (
           <BsSun className="theme-icons" />
         ) : (
-          <FaMoon className="theme-icon-sun" />
+          <FaMoon className="theme-icon-moon" />
         )
         const bgColor = darkTheme
           ? 'nav-container-top bg-color-header'

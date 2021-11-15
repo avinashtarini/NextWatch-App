@@ -13,6 +13,7 @@
 
 .thumbnail {
   width: 35%;
+  height: 100%;
 }
 .trending-videos-details-container {
   font-family: 'Roboto';
@@ -21,6 +22,8 @@
 }
 .video-views-container-trending {
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .gaming-videos-container {
   flex-wrap: wrap;
@@ -35,11 +38,13 @@
   }
 
   .thumbnail {
-    width: 30%;
+    width: 40%;
+    height: 100%;
   }
   .trending-videos-details-container {
     font-family: 'Roboto';
     width: 100%;
-    padding-left: 20px;
+    font-size: 10px;
+    padding-left: 10px;
   }
 }

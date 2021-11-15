@@ -19,11 +19,17 @@ export const DetailsContainer = styled.div`
 export const NextWatchLogo = styled.img`
   height: 40px;
   margin-bottom: 10px;
+  @media screen and (max-width: 500px) {
+    height: 30px;
+  }
 `
 export const BannerPara = styled.p`
   font-size: 20px;
   margin-bottom: 10px;
   color: #313131;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+  }
 `
 
 export const BannerButton = styled.button`
@@ -32,9 +38,15 @@ export const BannerButton = styled.button`
   padding-top: 5px;
   background-color: transparent;
   padding-bottom: 5px;
-  border: 1px solid #313131;
+  border: 2px solid #313131;
+  border-radius: 8px;
   color: #313131;
   width: 30%;
+  @media screen and (max-width: 500px) {
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 50%;
+  }
 `
 export const CloseButton = styled.button`
   align-self: flex-start;

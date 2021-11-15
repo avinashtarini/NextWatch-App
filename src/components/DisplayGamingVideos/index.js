@@ -9,8 +9,10 @@ const DisplayGamingVideos = props => {
     <Link className="link-style" to={`/videos/${id}`}>
       <div className="games-display-container">
         <img src={thumbnailUrl} alt="video thumbnail" className="game-logo" />
-        <p className="game-name">{title}</p>
-        <p className="game-views">{viewCount}</p>
+        <div className="game-description-container">
+          <p className="game-name">{title}</p>
+          <p className="game-views">{viewCount}</p>
+        </div>
       </div>
     </Link>
   )

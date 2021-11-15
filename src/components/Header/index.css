@@ -2,30 +2,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
   height: 10vh;
 }
 .bg-color-header {
   background-color: #231f20;
 }
 .website {
-  height: 40px;
+  height: 25px;
 }
 .profile-photo {
-  width: 30px;
+  width: 20px;
 }
 .logout-button {
   color: #4f46e5;
   background-color: #ffffff;
-  border: 2px solid #4f46e5;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-size: 15px;
-  border-radius: 8px;
-  margin-left: 12px;
+  border: 1px solid #4f46e5;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 12px;
+  border-radius: 6px;
+  margin-left: 10px;
   cursor: pointer;
 }
 .theme-container {
@@ -34,16 +34,16 @@
   align-items: center;
 }
 .theme-changer-btn {
-  margin-right: 12px;
   background-color: transparent;
   border-width: 0px;
+  padding-top: 2px;
 }
 .theme-icons {
-  font-size: 24px;
+  font-size: 18px;
+  color: #ffffff;
 }
-.theme-icon-sun {
-  font-size: 24px;
-  background-color: #ffffff;
+.theme-icon-moon {
+  font-size: 18px;
 }
 .header-link-style {
   text-decoration: inherit;
@@ -57,20 +57,94 @@
 .trigger-button {
   color: purple;
   border: 2px solid purple;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #ffffff;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-  margin-right: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-right: 8px;
   cursor: pointer;
 }
 .popup-desc {
   color: #231f20;
-  font-size: 24px;
+  font-size: 15px;
   font-weight: bold;
   font-style: italic;
 }
-@media screen and (max-width: 568px) {
+@media screen and (min-width: 768px) {
+  .nav-container-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 10vh;
+  }
+  .bg-color-header {
+    background-color: #231f20;
+  }
+  .website {
+    height: 40px;
+  }
+  .profile-photo {
+    width: 30px;
+  }
+  .logout-button {
+    color: #4f46e5;
+    background-color: #ffffff;
+    border: 2px solid #4f46e5;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-left: 12px;
+    cursor: pointer;
+  }
+  .theme-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .theme-changer-btn {
+    margin-right: 12px;
+    background-color: transparent;
+    border-width: 0px;
+  }
+  .theme-icons {
+    font-size: 24px;
+  }
+  .theme-icon-sun {
+    font-size: 24px;
+    background-color: #ffffff;
+  }
+  .header-link-style {
+    text-decoration: inherit;
+    color: inherit;
+  }
+
+  .popup-content {
+    border-radius: 10px;
+    padding: 15px;
+  }
+  .trigger-button {
+    color: purple;
+    border: 2px solid purple;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+  .popup-desc {
+    color: #231f20;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+  }
 }

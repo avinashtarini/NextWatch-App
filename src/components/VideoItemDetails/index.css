@@ -1,12 +1,16 @@
 .video-items-details-container {
   display: flex;
   flex-direction: column;
-
   width: 100%;
 }
 .bg-video-item-dark {
   background-color: #0f0f0f;
   color: #ffffff;
+}
+.channel-description-and-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .bg-video-item-light {
   background-color: #f9f9f9;
@@ -20,6 +24,7 @@
 .views-and-date-container {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 .views-and-like-container {
   display: flex;
@@ -33,6 +38,7 @@
 }
 .description-and-channel-container {
   display: flex;
+  align-items: center;
 }
 .likes-list {
   list-style-type: none;
@@ -55,4 +61,40 @@
 }
 .active-style-like {
   color: #2563eb;
+}
+.video-heading {
+  font-weight: 500;
+  font-size: 24px;
+}
+.count {
+  margin-right: 10px;
+}
+.channel-name-details {
+  display: flex;
+  flex-direction: column;
+}
+.channel-name-l {
+  margin: 0px;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+.channel-desc {
+  margin-top: 8px;
+}
+@media screen and (max-width: 568px) {
+  .video-heading {
+    font-size: 17px;
+  }
+  .views-and-date-container {
+    font-size: 14px;
+  }
+  .count {
+    margin-right: 10px;
+  }
+
+  .channel-style {
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+  }
 }

@@ -12,6 +12,7 @@ export const GamingVideosContainer = styled.div`
 `
 export const MainHeadingGaming = styled.div`
   font-size: 25px;
+  margin-left: 10px;
 `
 
 export const FailureViewContainer = styled.div`
