@@ -90,6 +90,7 @@ class Login extends Component {
                 type="text"
                 id="login"
                 className="input-style"
+                placeholder="username rahul"
                 onChange={this.getUsername}
               />
             </div>
@@ -102,6 +103,7 @@ class Login extends Component {
                 className="input-style"
                 type={inputTypeSet}
                 id="code"
+                placeholder="password rahul@2021"
                 onChange={this.getPassword}
               />
             </div>
